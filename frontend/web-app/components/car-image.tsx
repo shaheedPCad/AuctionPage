@@ -25,7 +25,7 @@ export default function CarImage({ imageUrl, make }: CarImageProps) {
           : "grayscale-0 blur-0 scale-100"
       )}
       sizes="(max-width:768px) 100vw, 33vw"
-      onLoadingComplete={() => setLoading(false)}
+      onLoad={() => setLoading(false)}
     />
   );
 }
