@@ -3,17 +3,21 @@
 import React, { useState } from "react";
 import { Search } from "lucide-react";
 import { useParamsStore } from "@/hooks/use-params-store";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function SearchBar() {
   const setParams = useParamsStore((state) => state.setParams);
   const setSearchValue = useParamsStore((state) => state.setSearchValue);
   const searchValue = useParamsStore((state) => state.searchValue);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const onChange = (event: any) => {
     setSearchValue(event.target.value);
   };
 
   const search = () => {
+    if (pathname !== "/") router.push("/");
     setParams({ searchTerm: searchValue });
   };
 
